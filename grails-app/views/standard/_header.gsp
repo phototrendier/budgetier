@@ -10,7 +10,7 @@
             </p>
         </div>
         <div class="col-sm-2">
-            <g:if test="${session["logged_in_user"]}">
+            <g:if test="${!session["logged_in_user"]}">
                 <div class="row">
                     <div class="col-sm-12">
                         <oauth:connect provider="facebook">
