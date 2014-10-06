@@ -1,16 +1,13 @@
 package com.budgetier.enums.user
 
 /**
- * Created by vbledar on 10/2/14.
- *
- * This enumeration lists the social networks a user can login
- * with.
+ * Created by vbledar on 10/5/14.
  */
-public enum SocialNetworkType {
+public enum UserGenderType {
 
-    FACEBOOK ('Facebook', 'social.network.type.facebook'),  // defines a facebook user
-    TWITTER ('Twitter', 'social.network.type.twitter'),     // defines a twitter user
-    GOOGLE_PLUS ('Google+', 'social.network.type.google')   // defines a google plus user
+    MALE ("Male", "user.gender.male"),
+    GREEK ("Female", "user.gender.female"),
+    OTHER ("Other", "user.gender.other")
 
     private String descriptive                              // default human readable representation
     private String i18nDescriptive                          // i18n representation
@@ -22,7 +19,7 @@ public enum SocialNetworkType {
      *
      * @param descriptive, the value to set.
      */
-    public SocialNetworkType(String descriptive, String i18nDescriptive) {
+    public UserGenderType(String descriptive, String i18nDescriptive) {
         this.descriptive = descriptive
         this.i18nDescriptive = i18nDescriptive
     }

@@ -94,6 +94,8 @@ grails.hibernate.osiv.readonly = false
 
 environments {
     development {
+//        grails.serverURL = "http://192.168.2.3:8080/budgetier"
+
         grails.logging.jul.usebridge = true
 
         // oauth 2.0 configuration for different social networks
@@ -108,6 +110,8 @@ environments {
                     failureUri  = 'http://localhost:8080/budgetier/socialManager/facebookFailureHandler'
 
                     callback    = "http://localhost:8080/budgetier/oauth/facebook/callback"
+
+                    graphApi    = "https://graph.facebook.com"
                 }
                 twitter {                                                            // twitter provider configuration
                     api     = TwitterApi.SSL                                         // already implemented provider for twitter
@@ -147,4 +151,6 @@ log4j = {
            'org.springframework',
            'org.hibernate',
            'net.sf.ehcache.hibernate'
+
+    info 'grails.controllers.com.budgetier.social.SocialManagerController'
 }

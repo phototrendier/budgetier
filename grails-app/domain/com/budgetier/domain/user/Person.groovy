@@ -1,37 +1,44 @@
 package com.budgetier.domain.user
 
+import com.budgetier.domain.MongoBaseRecord
+import com.budgetier.enums.management.LocaleType
 import com.budgetier.enums.user.SocialNetworkType
+import com.budgetier.enums.user.UserGenderType
 
 /**
  * This class models a physical user in the application.
  */
-class Person {
+class Person extends MongoBaseRecord {
 
-    String username                         // the account name used to login and be identified
+    String firstName
+    String lastName
 
-    String firstName                        // user real first name, or whatever retrieved from social network
-    String lastName                         // user real last name, or whatever defined from social network
+    String email
 
-    String email                            // user email retrieved from social network. if none is defined
-                                            // then user information retrieve flow is shown in case the user
-                                            // has requested to be notified by email
+    Boolean receiveNotifications
 
-    Boolean receiveNotifications            // global flag on user level to enable/disable email notifications.
-                                            // can be null which defaults to disabled email notifications
+    SocialNetworkType socialNetworkType
+    String socialNetworkId
 
-    SocialNetworkType socialNetworkType     // defines the social network the user selected
-                                            // to login in the system
+    Boolean userVerified
+
+    LocaleType userLocale = LocaleType.ENGLISH
+    UserGenderType genderType = UserGenderType.OTHER
 
     static constraints = {
-        username nullable: false, email: true
-
         firstName nullable: true
         lastName nullable: true
 
-        email nullable: false, email: true
+        email nullable: true, email: true
 
         receiveNotifications nullable: true
 
         socialNetworkType nullable: false
+        socialNetworkId nullable: true
+
+        userVerified nullable: true
+
+        userLocale nullable: false
+        genderType nullable: false
     }
 }

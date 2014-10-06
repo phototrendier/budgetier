@@ -83,5 +83,9 @@ grails.project.dependency.resolution = {
         compile ":mongodb:3.0.2"
 
         compile ":oauth:2.1.0"
+
+        compile ":twitter-bootstrap:3.2.0.2"
+
+        compile ":rest:0.8"
     }
 }

@@ -1,19 +1,20 @@
-package com.budgetier.enums.user
+package com.budgetier.enums.management
 
 /**
- * Created by vbledar on 10/2/14.
+ * Created by vbledar on 10/4/14.
  *
- * This enumeration lists the social networks a user can login
- * with.
+ * This enumeration defines the different locale types the
+ * application can support.
  */
-public enum SocialNetworkType {
+public enum LocaleType {
 
-    FACEBOOK ('Facebook', 'social.network.type.facebook'),  // defines a facebook user
-    TWITTER ('Twitter', 'social.network.type.twitter'),     // defines a twitter user
-    GOOGLE_PLUS ('Google+', 'social.network.type.google')   // defines a google plus user
+    ENGLISH ("English", "locale.type.english", "en_US"),
+    GREEK ("Greek", "locale.type.greek", "el"),
+    FRENCH ("French", "locale.type.french", "fr")
 
     private String descriptive                              // default human readable representation
     private String i18nDescriptive                          // i18n representation
+    private String localeIsoValue                                // the local iso value, eg. gr for greek and en_US for english
 
     /**
      * Enumeration instance constructor. This constructor
@@ -22,9 +23,10 @@ public enum SocialNetworkType {
      *
      * @param descriptive, the value to set.
      */
-    public SocialNetworkType(String descriptive, String i18nDescriptive) {
+    public LocaleType(String descriptive, String i18nDescriptive, String localeIsoValue) {
         this.descriptive = descriptive
         this.i18nDescriptive = i18nDescriptive
+        this.localeIsoValue = localeIsoValue
     }
 
     /**
@@ -48,4 +50,16 @@ public enum SocialNetworkType {
     public String getI18nDescriptive() {
         return this.i18nDescriptive
     }
+
+    /**
+     * Return the locale value as described by the iso standard.
+     *
+     * @return <code>String</code> the locale iso value of the
+     * enumeration instance.
+     */
+    public String getLocalIsoValue() {
+        return this.localeIsoValue
+    }
+
+
 }

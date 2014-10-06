@@ -23,8 +23,9 @@ public enum MoneyFlowType {
      *
      * @param descriptive, the value to set.
      */
-    public MoneyFlowType(String descriptive) {
+    public MoneyFlowType(String descriptive, String i18nDescriptive) {
         this.descriptive = descriptive
+        this.i18nDescriptive = i18nDescriptive
     }
 
     /**
