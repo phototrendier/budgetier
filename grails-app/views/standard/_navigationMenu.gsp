@@ -44,11 +44,11 @@
                     <button type="submit" class="btn btn-default">
                         <span class="glyphicon glyphicon-search"></span> Submit</button>
                 </form>
-                <g:if test="${session["logged_in_user"]?.firstName} ${session["logged_in_user"]?.lastName}">
+                <g:if test="${session["logged_in_user"]}">
                     <p class="navbar-text navbar-right">Welcome
-                        <a href="#" class="navbar-link">
+                        <g:link controller="myProfile" action="profileManagement">
                             <strong>${session["logged_in_user"]?.firstName}</strong>
-                        </a>
+                        </g:link>
                     </p>
                 </g:if>
             </ul>

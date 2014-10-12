@@ -1,7 +1,7 @@
 package untitled
 
 import com.budgetier.domain.user.Person
-import com.budgetier.enums.user.SocialNetworkType
+import com.budgetier.enums.social.SocialNetworkType
 import grails.test.mixin.TestFor
 import spock.lang.Specification
 

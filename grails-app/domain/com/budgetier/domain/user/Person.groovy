@@ -1,8 +1,10 @@
 package com.budgetier.domain.user
 
 import com.budgetier.domain.MongoBaseRecord
+import com.budgetier.domain.media.Photo
+import com.budgetier.domain.social.UserPermission
 import com.budgetier.enums.management.LocaleType
-import com.budgetier.enums.user.SocialNetworkType
+import com.budgetier.enums.social.SocialNetworkType
 import com.budgetier.enums.user.UserGenderType
 
 /**
@@ -10,20 +12,24 @@ import com.budgetier.enums.user.UserGenderType
  */
 class Person extends MongoBaseRecord {
 
-    String firstName
-    String lastName
+    String firstName                                    // user first name
+    String lastName                                     // user last name
 
-    String email
+    String email                                        // user email
 
-    Boolean receiveNotifications
+    Boolean receiveNotifications                        // defines if user accepts notifications
 
-    SocialNetworkType socialNetworkType
-    String socialNetworkId
+    SocialNetworkType socialNetworkType                 // from which social network the user logged in
+    String socialNetworkId                              // the social network user id
 
-    Boolean userVerified
+    Boolean userVerified                                // if the user is verified
 
-    LocaleType userLocale = LocaleType.ENGLISH
-    UserGenderType genderType = UserGenderType.OTHER
+    LocaleType userLocale = LocaleType.ENGLISH          // user language preference
+    UserGenderType genderType = UserGenderType.OTHER    // user gender type
+
+    Photo profilePhoto                                  // user profile photo
+
+    static hasMany = [permissions: UserPermission]      // permissions: social network permissions on the user
 
     static constraints = {
         firstName nullable: true
@@ -40,5 +46,9 @@ class Person extends MongoBaseRecord {
 
         userLocale nullable: false
         genderType nullable: false
+
+        profilePhoto nullable: true
+
+        permissions nullable: true
     }
 }

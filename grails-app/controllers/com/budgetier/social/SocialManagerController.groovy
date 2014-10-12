@@ -1,7 +1,6 @@
 package com.budgetier.social
 
 import com.budgetier.domain.user.Person
-import com.budgetier.enums.user.SocialNetworkType
 
 class SocialManagerController {
 

@@ -37,18 +37,18 @@
         $('#header_nav').data('size','big');
     });
 
-    $(window).scroll(function(){
-        if($(document).scrollTop() > 130)
-        {
-            $('.jumbotron').hide();
-            $('.navbar').addClass("navbar-fixed-top");
-        }
-        else
-        {
-            $('.navbar').removeClass("navbar-fixed-top");
-            $('.jumbotron').slideDown("slow");
-        }
-    });
+//    $(window).scroll(function(){
+//        if($(document).scrollTop() > 130)
+//        {
+//            $('.jumbotron').hide();
+//            $('.navbar').addClass("navbar-fixed-top");
+//        }
+//        else
+//        {
+//            $('.navbar').removeClass("navbar-fixed-top");
+//            $('.jumbotron').slideDown("slow");
+//        }
+//    });
 
 
 </g:javascript>

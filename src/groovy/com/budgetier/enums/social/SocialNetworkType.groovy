@@ -1,4 +1,4 @@
-package com.budgetier.enums.user
+package com.budgetier.enums.social
 
 /**
  * Created by vbledar on 10/2/14.

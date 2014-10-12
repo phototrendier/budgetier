@@ -2,7 +2,7 @@ package com.budgetier.social
 
 import com.budgetier.domain.user.Person
 import com.budgetier.enums.management.LocaleType
-import com.budgetier.enums.user.SocialNetworkType
+import com.budgetier.enums.social.SocialNetworkType
 import com.budgetier.enums.user.UserGenderType
 import com.budgetier.utilities.EnumUtilityMethods
 import grails.transaction.Transactional
@@ -20,7 +20,7 @@ class FacebookService extends ISocialNetwork {
         http.request(Method.GET, "application/json") {
             uri.path = "/me"
             uri.query = [access_token: accessToken,
-                         fields: "id,email,first_name,last_name,verified,gender,locale"]
+                         fields: "id,email,first_name,last_name,verified,gender,locale,picture"]
 
             response.success = { resp, json ->
                 log.error resp.statusLine
