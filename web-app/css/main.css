@@ -1,3 +1,8 @@
+body {
+    padding-bottom: 150px;
+    margin-bottom: 150px;
+}
+
 .jumbotron {
     margin-bottom: 0px !important;
 }

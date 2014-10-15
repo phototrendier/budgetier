@@ -6,7 +6,7 @@ package com.budgetier.enums.user
 public enum UserGenderType {
 
     MALE ("Male", "user.gender.male"),
-    GREEK ("Female", "user.gender.female"),
+    FEMALE ("Female", "user.gender.female"),
     OTHER ("Other", "user.gender.other")
 
     private String descriptive                              // default human readable representation

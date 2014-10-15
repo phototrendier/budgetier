@@ -62,43 +62,45 @@
                 </blockquote>
                 <blockquote>
                     <label class="text-muted"><g:message code="form.field.email"/></label>
-                    <button class="btn btn-primary btn-sm pull-right">
-                        <g:message code="button.label.refresh.from.social" args="[socialNetworkType]"/>
-                    </button>
+                    %{--<button class="btn btn-primary btn-sm pull-right">--}%
+                        %{--<g:message code="button.label.refresh.from.social" args="[socialNetworkType]"/>--}%
+                    %{--</button>--}%
+
+                    <g:render template="social/emailPermissionRequester" model="[person: person]"/>
 
                     <div class="spacer10"></div>
 
-                    <input type="email" class="form-control" id="email" placeholder="Enter your email" value="${person?.email}">
+                    <input id="email" name="email" type="email" class="form-control" placeholder="Enter your email" value="${person?.email}">
 
                     <div class="spacer10"></div>
 
                     <div class="alert alert-warning">
-                        <p>
+                        <h5>
                             <g:message code="profile.management.email.from.social.message" args="[socialNetworkType]"/>
-                        </p>
+                        </h5>
                     </div>
                 </blockquote>
                 <blockquote>
                     <div class="checkbox">
                         <label>
-                            <input type="checkbox"> <g:message code="profile.management.receive.email.notifications"/>
+                            <input name="receiveNotifications" type="checkbox" ${person.receiveNotifications ? 'checked': ''}> <g:message code="profile.management.receive.email.notifications"/>
                         </label>
                     </div>
                 </blockquote>
                 <blockquote>
                     <label class="text-muted"><g:message code="form.field.user.gender"/></label>
-                    <g:select name="userGenderType"
-                              from="${com.budgetier.enums.user.UserGenderType.values()*.descriptive}"
-                              keys="${com.budgetier.enums.user.UserGenderType.values()}"
-                              value="${person?.userGenderType?.name}"
+                    <g:select name="genderType"
+                              from="${com.budgetier.enums.user.UserGenderType.values()*.getDescriptive()}"
+                              keys="${com.budgetier.enums.user.UserGenderType.values()*.name()}"
+                              value="${person?.genderType?.name()}"
                               class="form-control"/>
                 </blockquote>
                 <blockquote>
                     <label class="text-muted"><g:message code="form.field.locale"/></label>
-                    <g:select name="userLocaleType"
-                              from="${com.budgetier.enums.management.LocaleType.values()*.descriptive}"
-                              keys="${com.budgetier.enums.management.LocaleType.values()}"
-                              value="${person?.userLocale}"
+                    <g:select name="userLocale"
+                              from="${com.budgetier.enums.management.LocaleType.values()*.getDescriptive()}"
+                              keys="${com.budgetier.enums.management.LocaleType.values()*.name()}"
+                              value="${person?.userLocale?.name()}"
                               class="form-control"/>
                 </blockquote>
                 <div class="row">

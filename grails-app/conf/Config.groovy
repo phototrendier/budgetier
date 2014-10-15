@@ -111,6 +111,7 @@ environments {
 
                     callback    = "http://localhost:8080/budgetier/oauth/facebook/callback"
 
+                    facebookUrl = "https://www.facebook.com/dialog/oauth"
                     graphApi    = "https://graph.facebook.com"
                 }
                 twitter {                                                            // twitter provider configuration

@@ -24,6 +24,8 @@
         <g:render template="/standard/header"/>
         <g:render template="/standard/navigationMenu"/>
 
+        <g:render template="/standard/messageHandler"/>
+
         <div class="container-fluid container-full-width">
             <div class="row">
                 <div class="col-sm-12">

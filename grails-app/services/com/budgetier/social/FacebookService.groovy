@@ -13,6 +13,27 @@ import groovyx.net.http.Method
 class FacebookService extends ISocialNetwork {
 
     def grailsApplication
+    def grailsLinkGenerator
+
+    def requestPermissions(String permissions, String controller, String action) {
+        String redirectUrl = grailsLinkGenerator.link(controller: controller, action: action)
+        def http = new HTTPBuilder(grailsApplication.config.oauth.providers.facebook.facebookUrl)
+        http.request(Method.GET, "application/json") {
+            uri.path = "/"
+            uri.query = [client_id: grailsApplication.config.oauth.providers.facebook.key,
+                         redirect_uri: redirectUrl,
+                         scope: permissions]
+
+            response.success = { resp, json ->
+                log.error resp.statusLine
+                log.error json
+            }
+
+            response.failure = { resp ->
+                log.error resp
+            }
+        }
+    }
 
     @Override
     def getUserInformation(String accessToken) {
