@@ -2,10 +2,22 @@ package com.budgetier.person
 
 import com.budgetier.domain.user.Person
 import com.budgetier.enums.social.SocialNetworkType
+import org.scribe.model.Token
+import org.scribe.model.Verifier
+import uk.co.desirableobjects.oauth.scribe.OauthProvider
+import uk.co.desirableobjects.oauth.scribe.OauthService
+import uk.co.desirableobjects.oauth.scribe.SupportedOauthVersion
 
 class MyProfileController {
 
+    private final Token EMPTY_TOKEN = new Token('', '')
+
+    def grailsApplication
+    def grailsLinkGenerator
+
     def facebookService
+    def oauthService
+    def customOAuthService
 
     /**
      * Render person's profile management screen.
@@ -14,6 +26,7 @@ class MyProfileController {
         Person person = (Person) session["logged_in_user"]
         if (!person) {
             flash.error = message (code: "user.message.no.logged.in.user.found")
+            redirect(controller: "landing", action: "index" )
         }
 
         render (view: "profileManagement", model: [person: person])
@@ -51,14 +64,7 @@ class MyProfileController {
             return
         }
 
-        flash.success = message (code: "user.message.profile.update.successful")
+        flash.success = message(code: "user.message.profile.update.successful")
         redirect(action: "profileManagement")
-    }
-
-    def ajaxRequestUserPermissions() {
-        Person person = (Person) session["logged_in_user"]
-        if (person?.socialNetworkType == SocialNetworkType.FACEBOOK) {
-
-        }
     }
 }

@@ -35,6 +35,43 @@ class FacebookService extends ISocialNetwork {
         }
     }
 
+    def requestUserEmail() {
+        def http = new HTTPBuilder(grailsApplication.config.oauth.providers.facebook.graphApi)
+        http.request(Method.GET, "application/json") {
+            uri.path = "/me"
+            uri.query = [access_token: accessToken,
+                         fields: "id,email"]
+
+            response.success = { resp, json ->
+                log.error resp.statusLine
+
+                if (json.id) {
+                    Person person = Person.findBySocialNetworkId(json.id)
+                    if (person) {
+                        if (json.email) {
+                            person.email = json.email
+                        }
+
+                        if (!person.save()) {
+                            log.error 'Failed to persist person instance.'
+                            person.errors.each {
+                                log.error it
+                            }
+                        }
+                    }
+                    return person
+                }
+            }
+
+            // handler for any failure status code:
+            response.failure = { resp ->
+                log.error uri
+                log.error "Unexpected error: ${resp.statusLine.statusCode} : ${resp.statusLine.reasonPhrase}"
+                return null
+            }
+        }
+    }
+
     @Override
     def getUserInformation(String accessToken) {
         def http = new HTTPBuilder(grailsApplication.config.oauth.providers.facebook.graphApi)

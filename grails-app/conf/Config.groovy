@@ -100,6 +100,7 @@ environments {
 
         // oauth 2.0 configuration for different social networks
         oauth {
+            debug = true
             providers {
                 facebook {                                          // facebook provider configuration
                     api     = FacebookApi                           // already implemented provider for facebook
